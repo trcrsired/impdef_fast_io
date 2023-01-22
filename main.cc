@@ -27,14 +27,9 @@ int main(int argc, char** argv)
 	print(obf,"LIBRARY \"",filenm,"\"\nEXPORTS\n");
 	if(pfl.export_info.export_directory)
 	{
-		auto& export_info{pfl.export_info};
-		auto namervas{export_info.namervas};
-		std::size_t const n{namervas.size()};
-		for(std::size_t i{};i!=n;++i)
+		for(auto nmrva : pfl.export_info.namervas)
 		{
-			auto nmrva{namervas[i]};
-			char const* cstr{pfl.rva_to_address<char const>(nmrva)};
-			println(obf,os_c_str(cstr));
+			println(obf,os_c_str(pfl.rva_to_address<char const>(nmrva)));
 		}
 	}
 }

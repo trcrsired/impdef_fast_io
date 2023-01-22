@@ -482,6 +482,7 @@ inline image_pe_file_view parse_pe_file(void* first,void *last)
 		export_info.namervas=::std::span<::std::uint_least32_t>(pfv.rva_to_address<::std::uint_least32_t>(export_directory.AddressOfNames),export_directory.NumberOfNames);
 		export_info.ordinals=::std::span<::std::uint_least16_t>(pfv.rva_to_address<::std::uint_least16_t>(export_directory.AddressOfNameOrdinals),export_directory.NumberOfNames);
 	}
+	return pfv;
 }
 
 }
